@@ -35,12 +35,9 @@ fn main() {
     let s_disemvowel = disemvowel(&s);
 
     let end_file = args[1].clone();
-    let path_to_file2 = Path::new(&end_file);
-    let file2 = write_file(path_to_file2, &s_disemvowel);
-
     // Use command-line arguments for the name of the file,
     // and s_disemvowel for the text to write out.
-    write_file(Path::new("dummy.txt"), "output string");
+    write_file(Path::new(&end_file), &s_disemvowel);
 }
 
 fn read_file(path: &Path) -> String {
@@ -52,7 +49,13 @@ fn write_file(path: &Path, s: &str) {
 
 //TODO: Return the input string without vowels.
 fn disemvowel(s: &str) -> String {
-    String::from(s)
+    let initialString = &String::from(s);
+
+    for ch in initialString.chars(){}
+
+    initialString.to_string()
+
+
 }
 
 // Everything from here down is Rust test code. You shouldn't need to
