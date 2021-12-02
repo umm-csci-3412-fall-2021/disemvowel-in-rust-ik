@@ -16,15 +16,15 @@ fn main() {
     let args: Vec<String> = env::args().collect();
 
     let length = args.len();
-    if  length < 2 || length > 2 {
-        panic!("Not enough arguments");}
+    if  length < 3 || length > 3 {
+        panic!("Not enough arguments")}
 
     //TODO:
     //  * Pass an argument to read_file to read the original text
     //  * Pass that to disemvowel to remove the vowels
     //  * Write the disemvoweled text using write_file
     // let file = fs::read_to_string(&args[0]).expect("Something went wrong");
-    let start_file = args[0].clone();
+    let start_file = args[1].clone();
     let path_to_file1 = Path::new(&start_file);
     let file1 = read_file(path_to_file1);
     
@@ -34,7 +34,7 @@ fn main() {
 
     let s_disemvowel = disemvowel(&s);
 
-    let end_file = args[1].clone();
+    let end_file = args[2].clone();
     // Use command-line arguments for the name of the file,
     // and s_disemvowel for the text to write out.
     write_file(Path::new(&end_file), &s_disemvowel);
