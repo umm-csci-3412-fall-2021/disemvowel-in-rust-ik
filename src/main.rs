@@ -49,11 +49,17 @@ fn write_file(path: &Path, s: &str) {
 
 //TODO: Return the input string without vowels.
 fn disemvowel(s: &str) -> String {
-    let initialString = &String::from(s);
+    let initial_string = &String::from(s);
+    let mut final_string = String::from("");
 
-    for ch in initialString.chars(){}
+    for ch in initial_string.chars(){
+        match ch {
+        'a'|'e'|'i'|'o'|'u'|'A'|'E'|'I'|'O'|'U'=> (),
+        _ => final_string.push(ch),
+        }
+    }
 
-    initialString.to_string()
+    final_string.to_string()
 
 
 }
