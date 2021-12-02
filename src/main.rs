@@ -15,22 +15,29 @@ fn main() {
     // be the file we want to write the disemvoweled text to.
     let args: Vec<String> = env::args().collect();
 
-    //TODO: Panic if not enough arguments are provided
-    //Panic should output the string "Not enough arguments"
+    let length = args.len();
+    if  length < 3 || length > 3 {
+        panic!("Not enough arguments")}
 
     //TODO:
     //  * Pass an argument to read_file to read the original text
     //  * Pass that to disemvowel to remove the vowels
     //  * Write the disemvoweled text using write_file
+    // let file = fs::read_to_string(&args[0]).expect("Something went wrong");
+    let start_file = args[1].clone();
+    let path_to_file1 = Path::new(&start_file);
+    let file1 = read_file(path_to_file1);
+    
 
     // Replace String::from("dummy text") with what you get from read_file
-    let s = String::from("dummy text");
+    let s = String::from(file1);
 
     let s_disemvowel = disemvowel(&s);
 
+    let end_file = args[2].clone();
     // Use command-line arguments for the name of the file,
     // and s_disemvowel for the text to write out.
-    write_file(Path::new("dummy.txt"), "output string");
+    write_file(Path::new(&end_file), &s_disemvowel);
 }
 
 fn read_file(path: &Path) -> String {
@@ -42,7 +49,19 @@ fn write_file(path: &Path, s: &str) {
 
 //TODO: Return the input string without vowels.
 fn disemvowel(s: &str) -> String {
-    String::from(s)
+    let initial_string = &String::from(s);
+    let mut final_string = String::from("");
+
+    for ch in initial_string.chars(){
+        match ch {
+        'a'|'e'|'i'|'o'|'u'|'A'|'E'|'I'|'O'|'U'=> (),
+        _ => final_string.push(ch),
+        }
+    }
+
+    final_string.to_string()
+
+
 }
 
 // Everything from here down is Rust test code. You shouldn't need to
